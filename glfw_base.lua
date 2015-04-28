@@ -8,20 +8,18 @@ local Lib = {}
 setmetatable(glc, {__index=function(self, k) error("Unknown GL constant: "..k) end})
 
 -- Load and export libraries
-local gl, glu, glfw
+local gl, glfw
 if ffi.os == "Windows" then
-	gl = ffi.load("opengl32")
-	glu = ffi.load("glu32")
-	glfw = ffi.load("glfw3")
+	error("Windows unsupport OpenGL ES")
+	-- gl = ffi.load("opengl32")
+	-- glfw = ffi.load("glfw3")
 else
-	gl = ffi.load("GL")
-	glu = ffi.load("GLU")
+	gl = ffi.load("GLESv2")
 	glfw = ffi.load("glfw.so.3")
 end
 
 Lib.gl = gl
 Lib.glc = glc
-Lib.glu = glu
 Lib.glfw = glfw
 
 -- Export a metatable for automatically loading extension functions
@@ -81,7 +79,7 @@ Lib.terminate          = wrap(glfw, "glfwTerminate")
 
 -- Shortcut for localizing libraries
 function Lib.libraries()
-	return Lib.gl, Lib.glc, Lib.glu, Lib.glfw, Lib.glext
+	return Lib.gl, Lib.glc, Lib.glfw, Lib.glext
 end
 
 -- Throws an error on failure

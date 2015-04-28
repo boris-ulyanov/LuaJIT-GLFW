@@ -5,7 +5,6 @@
 // and scan for it in cdef.py
 #define APIENTRY GL_APIENTRY
 
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include <GLES2/gl2.h>
+#include <GLES2/gl2ext.h>
 #include <GLFW/glfw3.h>
-#include "glext.h"
