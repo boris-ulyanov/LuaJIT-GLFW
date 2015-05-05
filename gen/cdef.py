@@ -6,14 +6,14 @@ defines = {}
 cdefs = []
 
 location_re = re.compile(r'^# \d+ "([^"]*)"')
-glpath_re = re.compile(r'^(?:.*[\\/]|\A)(gl|glu|glfw3|glext)\.h$')
+glpath_re = re.compile(r'^(?:.*[\\/]|\A)(gl2|glfw3|gl2ext|.*platform)\.h$')
 define_re = re.compile(r"^#define\s+([^\s]+)\s+([^\s]+)$")
 
 number_re = re.compile(r"^-?[0-9]+$")
 hex_re = re.compile(r"0x[0-9a-fA-F]+$")
 
 # Set of known #defines that we don't need to include
-INVALID_DEFINES = set(["GLAPI", "APIENTRY", "GLU_TESS_MAX_COORD", "gluErrorStringWIN", "WINGDIAPI", "CALLBACK"])
+INVALID_DEFINES = set(["GLAPI", "APIENTRY", "GL_APIENTRYP", "WINGDIAPI", "CALLBACK"])
 
 if __name__ == "__main__":
 	in_gl = False
