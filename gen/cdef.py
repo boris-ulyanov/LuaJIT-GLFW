@@ -13,7 +13,10 @@ number_re = re.compile(r"^-?[0-9]+$")
 hex_re = re.compile(r"0x[0-9a-fA-F]+$")
 
 # Set of known #defines that we don't need to include
-INVALID_DEFINES = set(["GLAPI", "APIENTRY", "GL_APIENTRYP", "WINGDIAPI", "CALLBACK"])
+INVALID_DEFINES = set([
+	"GLAPI", "APIENTRY", "GL_APIENTRYP", "WINGDIAPI", "CALLBACK",
+	"KHRONOS_APICALL", "GL_APICALL", "GL_APIENTRY"
+])
 
 if __name__ == "__main__":
 	in_gl = False
